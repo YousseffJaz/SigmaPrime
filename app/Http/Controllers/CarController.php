@@ -172,45 +172,58 @@ class CarController extends Controller
     }
 
     public function search(Request $request)
-{
-    // Valider les données saisies
-    $request->validate([
-        'date' => 'required|date|after_or_equal:today', // Assurez-vous que la date n'est pas dans le passé
-        'time' => 'required|date_format:H:i', // Valider le format de l'heure (HH:MM)
-    ]);
-
-    // Récupérer la date et l'heure choisies
-    $date = $request->input('date');
-    $time = $request->input('time');
+    {
+        //dd($request->all());
+        try {
+            // Valider les données saisies
+            $request->validate([
+                'date' => 'required|date|after_or_equal:today', // Assurez-vous que la date n'est pas dans le passé
+                'time' => 'required|date_format:H:i', // Valider le format de l'heure (HH:MM)
+            ]);
     
-    // Créer un objet Carbon combinant la date et l'heure
-    $dateTime = Carbon::createFromFormat('Y-m-d H:i', "$date $time");
+            // Récupérer la date et l'heure choisies
+            $date = $request->input('date');
+            $time = $request->input('time');
+            
+            // Créer un objet Carbon combinant la date et l'heure
+            $dateTime = Carbon::createFromFormat('Y-m-d H:i', "$date $time");
+    
+            // Rechercher les voitures qui ne sont pas réservées pour cette date et heure spécifiques
+            $cars = Car::whereDoesntHave('reservations', function ($query) use ($dateTime) {
+                $query->where(function ($query) use ($dateTime) {
+                    // Vérifier si la réservation chevauche avec la date et l'heure choisies
+                    $query->where('start_date', '<=', $dateTime)
+                        ->where('end_date', '>=', $dateTime);
+                })
+                ->orWhere(function ($query) use ($dateTime) {
+                    // Vérifier si la voiture est déjà réservée avec des horaires de livraison et de retour
+                    $query->where('delivery_time', '<=', $dateTime)
+                        ->where('return_time', '>=', $dateTime);
+                })
+                ->orWhere(function ($query) use ($dateTime) {
+                    // Vérifier les réservations du même jour mais après l'heure de return_time
+                    $query->whereDate('end_date', '=', $dateTime->toDateString())  // Le même jour
+                        ->where('return_time', '>=', $dateTime->format('H:i')); // L'heure choisie est après return_time
+                });
+            })->get();
 
-    // Rechercher les voitures qui ne sont pas réservées pour cette date et heure spécifiques
-    $cars = Car::whereDoesntHave('reservations', function ($query) use ($dateTime) {
-        $query->where(function ($query) use ($dateTime) {
-            // Vérifier si la réservation chevauche avec la date et l'heure choisies
-            $query->where('start_date', '<=', $dateTime)
-                ->where('end_date', '>=', $dateTime);
-        })
-        ->orWhere(function ($query) use ($dateTime) {
-            // Vérifier si la voiture est déjà réservée avec des horaires de livraison et de retour
-            $query->where('delivery_time', '<=', $dateTime)
-                ->where('return_time', '>=', $dateTime);
-        })
-        ->orWhere(function ($query) use ($dateTime) {
-            // Vérifier les réservations du même jour mais après l'heure de return_time
-            $query->whereDate('end_date', '=', $dateTime->toDateString())  // Le même jour
-                ->where('return_time', '>=', $dateTime->format('H:i')); // L'heure choisie est après return_time
-        });
-    })->get();
+           
+    
+            // Retourner les résultats de la recherche à la vue
+            return view('cars.search_results', [
+                'cars' => $cars,
+                'dateTime' => $dateTime,
+            ]);
+            
+        } catch (\Exception $e) {
+            // Enregistrer l'erreur dans le fichier de log
+            dd($e->getMessage());
+          
 
-    // Retourner les résultats de la recherche à la vue
-    return view('cars.search_results', [
-        'cars' => $cars,
-        'dateTime' => $dateTime,
-    ]);
-}
+            // Retourner une vue d'erreur avec un message approprié
+            return redirect()->route('cars.index')->with('error', 'An error occurred while processing your search. Please try again later.');
+        }
+    }
 
     
 

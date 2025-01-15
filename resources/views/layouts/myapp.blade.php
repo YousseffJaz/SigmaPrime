@@ -30,28 +30,19 @@
                 <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl drop-shadow-2xl">
                     {{-- LOGO --}}
                     <a href="{{ route('home') }}" class="flex items-center">
-                        <img loading="lazy" src="/images/logos/LOGOtext.png" class="mr-3 h-12" alt="Flowbite Logo" />
+                        <img loading="lazy" src="/images/logos/LOGOtext.png" class="mr-3 h-24 w-auto" alt="Flowbite Logo" />
                     </a>
 
-                    {{-- login & Register buttons --}}
+                    {{-- Numéro de téléphone de l'agence --}}
                     <div class="flex items-center  lg:order-2">
-                        <a href="{{ route('login') }}">
-                            <button type="button"
-                                class=" px-4 lg:px-5 py-2 lg:py-2.5 mr-2 text-white bg-gradient-to-br from-pr-400 to-pr-300 hover:bg-gradient-to-bl font-medium rounded-lg text-sm ">
-                                login
-                            </button>
+                    <div class="group-hover:cursor-pointer text-2xl">📞 +216 72 23 01 05</div>
 
-                        </a>
-                        <a href="{{ route('register') }}">
-                            <button
-                                class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 ">
-                                <span
-                                    class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-sec-600 dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                    Register
-                                </span>
-                            </button>
 
-                        </a>
+
+
+
+
+                            
 
                         {{-- Mobile menu --}}
                         <button data-collapse-toggle="mobile-menu-2" type="button"
@@ -78,7 +69,7 @@
                             <li>
                                 <a href="/">
                                     <div class="group text-center">
-                                        <div class="group-hover:cursor-pointer">Home</div>
+                                        <div class="group-hover:cursor-pointer">ACCEUIL</div>
                                         <div
                                             class="block invisible bg-pr-400 w-12 h-1 rounded-md text-center -bottom-1 mx-auto relative group-hover:visible">
                                         </div>
@@ -87,7 +78,7 @@
                             <li>
                                 <a href="{{ route('cars') }}">
                                     <div class="group text-center">
-                                        <div class="group-hover:cursor-pointer">Cars</div>
+                                        <div class="group-hover:cursor-pointer">VOITURES</div>
                                         <div
                                             class="block invisible bg-pr-400 w-8 h-1 rounded-md text-center -bottom-1 mx-auto relative group-hover:visible">
                                         </div>
@@ -96,7 +87,7 @@
                             <li>
                                 <a href="/location">
                                     <div class="group text-center">
-                                        <div class="group-hover:cursor-pointer">Location</div>
+                                        <div class="group-hover:cursor-pointer">LOCATION</div>
                                         <div
                                             class="block invisible bg-pr-400 w-16 h-1 rounded-md text-center -bottom-1 mx-auto relative group-hover:visible">
                                         </div>
@@ -105,7 +96,7 @@
                             <li>
                                 <a href="/contact_us">
                                     <div class="group text-center">
-                                        <div class="group-hover:cursor-pointer">Contact Us</div>
+                                        <div class="group-hover:cursor-pointer">CONTACTEZ-NOUS</div>
                                         <div
                                             class="block invisible bg-pr-400 w-20 h-1 rounded-md text-center -bottom-1 mx-auto relative group-hover:visible">
                                         </div>
@@ -328,8 +319,8 @@
                 <div class="md:flex md:justify-between">
                     <div class="mb-12 md:mb-0 flex justify-center ">
                         <a href="" class="flex items-center">
-                            <img loading="lazy" src="/images/logos/LogoTextDark.png" class="mr-3 h-24"
-                                alt="Logo" />
+                        <img loading="lazy" src="/images/logos/LOGOtext.png" class="mr-3 h-24 w-auto" alt="Flowbite Logo" />
+
                         </a>
                     </div>
 

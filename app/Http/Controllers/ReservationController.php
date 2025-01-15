@@ -102,28 +102,36 @@ class ReservationController extends Controller
         // Vérifier la disponibilité de la voiture pendant la période demandée
         $startDate = new \Carbon\Carbon($request->input('start_date'));
         $endDate = new \Carbon\Carbon($request->input('end_date'));
-        $deliveryTime = $request->input('delivery_time');
-        $returnTime = $request->input('return_time');
+        $deliveryTime = \Carbon\Carbon::createFromFormat('H:i', $request->input('delivery_time'));
+        $returnTime = \Carbon\Carbon::createFromFormat('H:i', $request->input('return_time'));
 
-        // Convertir l'heure en format Carbon
-        $deliveryTime = \Carbon\Carbon::createFromFormat('H:i', $deliveryTime);
-        $returnTime = \Carbon\Carbon::createFromFormat('H:i', $returnTime);
+        if ($startDate->equalTo($endDate) && $deliveryTime->gt($returnTime)) {
+            return redirect()->route('reservations.create', ['car_id' => $car_id])
+                            ->with('error', 'L\'heure de retour doit être après l\'heure de livraison pour la même journée.');
+        }
 
-        // Rechercher une réservation existante pendant la période demandée
+
+        // Vérification des réservations existantes pour la même voiture
         $existingReservation = Reservation::where('car_id', $car->id)
-            ->where(function ($query) use ($startDate, $endDate, $deliveryTime, $returnTime) {
-                // Vérifier si les dates de réservation se chevauchent
-                $query->where(function ($query) use ($startDate, $endDate) {
-                        $query->where('start_date', '<=', $endDate)
-                              ->where('end_date', '>=', $startDate);
-                    })
-                    ->orWhere(function ($query) use ($deliveryTime, $returnTime) {
-                        // Vérifier si les horaires de livraison et retour se chevauchent
-                        $query->where('delivery_time', '<=', $returnTime)
-                              ->where('return_time', '>=', $deliveryTime);
+        ->where(function ($query) use ($startDate, $endDate, $deliveryTime, $returnTime) {
+            $query->where(function ($query) use ($startDate, $endDate, $deliveryTime, $returnTime) {
+                $query->where('start_date', '<=', $endDate)
+                    ->where('end_date', '>=', $startDate)
+                    ->where(function ($query) use ($deliveryTime, $returnTime) {
+                        $query->whereRaw('TIME(delivery_time) <= ?', [$returnTime->format('H:i')])
+                                ->whereRaw('TIME(return_time) >= ?', [$deliveryTime->format('H:i')]);
                     });
             })
-            ->exists();
+            ->orWhere(function ($query) use ($startDate, $deliveryTime) {
+                $query->where('end_date', '=', $startDate)
+                    ->whereRaw('TIME(return_time) > ?', [$deliveryTime->format('H:i')]);
+            })
+            ->orWhere(function ($query) use ($endDate, $returnTime) {
+                $query->where('start_date', '=', $endDate)
+                    ->whereRaw('TIME(delivery_time) < ?', [$returnTime->format('H:i')]);
+            });
+        })
+        ->exists();
 
             if ($existingReservation) {
                 // Si une réservation existe, rediriger vers le formulaire
@@ -167,6 +175,8 @@ class ReservationController extends Controller
                 $reservation->status = 'active';
                 $reservation->payment_method = 'on_site';
                 $reservation->payment_status = 'pending';
+
+                $car->status = 'Reserved';
         
                 // Sauvegarder la réservation
                 $reservation->save();
@@ -205,13 +215,38 @@ class ReservationController extends Controller
         return view('admin.updatePayment', compact('reservation'));
     }
 
-    public function updatePayment(Reservation $reservation, Request $request)
-    {
-        $reservation = Reservation::find($reservation->id);
-        $reservation->payment_status = $request->payment_status;
-        $reservation->save();
-        return redirect()->route('adminDashboard');
-    }
+    public function updatePayment(Request $request, $reservationId)
+{
+    // Validation des données
+    $request->validate([
+        'payment_method' => 'required|string', // Méthode de paiement obligatoire
+        //'amount_paid' => 'required|numeric|min:0', // Montant payé obligatoire et positif
+    ]);
+
+    // Récupération de la réservation
+    $reservation = Reservation::findOrFail($reservationId);
+
+    // Mise à jour des informations de paiement
+    $reservation->payment_method = $request->input('payment_method');
+
+    // Calcul du statut de paiement à la volée
+   /* $amountPaid = $request->input('amount_paid');
+    if ($amountPaid >= $reservation->total_price) {
+        $reservation->payment_status = 'Payé'; // Le montant payé est égal ou supérieur au total
+    } elseif ($amountPaid > 0 && $amountPaid < $reservation->total_price) {
+        $reservation->payment_status = 'Partiellement payé'; // Montant partiellement payé
+    } else {
+        $reservation->payment_status = 'Non payé'; // Aucun paiement
+    }*/
+
+    // Enregistrement des modifications
+    $reservation->save();
+
+    // Redirection avec message de succès
+    return redirect()->route('adminDashboard')->with('success', 'Paiement mis à jour avec succès.');
+}
+
+    
 
     // Edit and Update Reservation Status
     public function editStatus(Reservation $reservation)

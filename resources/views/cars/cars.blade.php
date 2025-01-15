@@ -18,20 +18,20 @@
         <form action="{{route('carSearch')}}">
             <div class="flex justify-center md:flex-row flex-col md:gap-28 gap-4">
                 <div class="flex justify-evenly md:flex-row flex-col md:gap-16 gap-2">
-                    <input type="text" placeholder="brand" name="brand"
+                    <input type="text" placeholder="marque" name="brand"
                     class="block  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-pr-400 sm:text-sm sm:leading-6"
                 >
-                <input type="text" placeholder="model" name="model"
+                <input type="text" placeholder="modèle" name="model"
                     class="block  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-pr-400 sm:text-sm sm:leading-6"
                 >
-                <input type="number" placeholder="$ minimum price " name="min_price"
+                <input type="number" placeholder="$ prix minimum" name="min_price"
                     class="block  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-pr-400 sm:text-sm sm:leading-6"
                 >
-                <input type="number" placeholder="$ maximum price " name="max_price"
+                <input type="number" placeholder="$ prix maximum " name="max_price"
                     class="block  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-pr-400 sm:text-sm sm:leading-6"
                 >
                 </div>
-                <button class="bg-pr-400 rounded-md text-white p-2 w-20 font-medium hover:bg-pr-500" type="submit" placeholder="brand"> Search</button>
+                <button class="bg-pr-400 rounded-md text-white p-2 w-25 font-medium hover:bg-pr-500" type="submit" placeholder="brand"> Rechercher</button>
             </div>
         </form>
     </div>
@@ -84,7 +84,7 @@
                             <path
                                 d="M184 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H96c-35.3 0-64 28.7-64 64v16 48V448c0 35.3 28.7 64 64 64H416c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H376V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H184V24zM80 192H432V448c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16V192zm176 40c-13.3 0-24 10.7-24 24v48H184c-13.3 0-24 10.7-24 24s10.7 24 24 24h48v48c0 13.3 10.7 24 24 24s24-10.7 24-24V352h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H280V256c0-13.3-10.7-24-24-24z" />
                         </svg>
-                        Reserve </a>
+                        Reserver </a>
                 </div>
             </div>
         @endforeach

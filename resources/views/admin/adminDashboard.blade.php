@@ -135,9 +135,9 @@
                                         <th class="px-4 py-3 w-24">Started at</th>
                                         <th class="px-4 py-3 w-24">End at</th>
                                         <th class="px-4 py-3">Duration</th>
-                                        <th class="px-4 py-3 w-26">Raimining days</th>
                                         <th class="px-4 py-3">Price</th>
-                                        <th class="px-4 py-3">Paiment Status</th>
+                                        <th class="px-4 py-3">Paiment Method</th>
+                                        <th class="px-4 py-3">Paiment status</th>
                                         <th class="px-4 py-3">Status</th>
                                         <th class="px-4 py-3 ">Actions</th>
                                     </tr>
@@ -149,34 +149,24 @@
                                         <tr class="text-gray-700 dark:text-gray-400">
                                             <td class="px-4 py-3">
                                                 <div class="flex items-center text-sm">
-                                                    <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                                    @if ($reservation->user && $reservation->user->avatar)
-    <img loading="lazy" class="object-cover w-full h-full rounded-full"
-         src="{{ $reservation->user->avatar }}" alt="" loading="lazy" />
-@else
-    <!-- Affichez une image par défaut ou un autre contenu si l'utilisateur ou l'avatar n'existe pas -->
-    <img loading="lazy" class="object-cover w-full h-full rounded-full"
-         src="{{ asset('images/default-avatar.png') }}" alt="default avatar" loading="lazy" />
-@endif
-
-                                                        <div class="absolute inset-0 rounded-full shadow-inner"
-                                                            aria-hidden="true"></div>
+                                                    
                                                     </div>
                                                     <div>
                                                     <p class="font-semibold">
-                                                        @if ($reservation->user)
-                                                            {{ $reservation->user->name }}
+                                                        @if ($reservation->first_name && $reservation->last_name)
+                                                            {{ $reservation->first_name }} {{ $reservation->last_name }}
                                                         @else
                                                             No client assigned
                                                         @endif
                                                     </p>
                                                     <p class="text-xs text-gray-600 dark:text-gray-400">
-                                                        @if ($reservation->user)
-                                                            {{ $reservation->user->email }}
+                                                        @if ($reservation->mobile_number)
+                                                            {{ $reservation->mobile_number }}
                                                         @else
-                                                            No email available
+                                                            No phone number available
                                                         @endif
                                                     </p>
+
                                                     </div>
                                                 </div>
                                             </td>
@@ -186,29 +176,17 @@
                                             </td>
 
                                             <td class="px-4 py-3  text-sm">
-                                                {{ Carbon\Carbon::parse($reservation->start_date)->format('y-m-d') }} </td>
+                                                {{ Carbon\Carbon::parse($reservation->start_date)->format('y-m-d') }}
+                                                {{ Carbon\Carbon::parse($reservation->delivery_time)->format('H:i') }}
+                                             </td>
                                             <td class="px-4 py-3  text-sm">
-                                                {{ Carbon\Carbon::parse($reservation->end_date)->format('y-m-d') }} </td>
-
+                                                {{ Carbon\Carbon::parse($reservation->end_date)->format('y-m-d') }}
+                                                {{ Carbon\Carbon::parse($reservation->return_time)->format('H:i') }}
+                                             </td>
                                             <td class=" text-xs">
                                                 <p class="px-4 py-3 text-sm">
                                                     {{ Carbon\Carbon::parse($reservation->end_date)->diffInDays(Carbon\Carbon::parse($reservation->start_date)) }}
                                                     days </p>
-                                            </td>
-
-
-                                            <td class="px-4 py-3 text-xs">
-                                                @if ($reservation->start_date > Carbon\Carbon::now())
-                                                    <p class="px-4 py-3 text-sm">
-                                                        {{ Carbon\Carbon::parse($reservation->end_date)->diffInDays(Carbon\Carbon::now()) }}
-                                                        days
-                                                    </p>
-                                                @else
-                                                    <span class="px-4 py-3 text-sm">
-                                                        {{ Carbon\Carbon::parse($reservation->end_date)->diffInDays(Carbon\Carbon::now()) }}
-                                                        days
-                                                    </span>
-                                                @endif
                                             </td>
 
                                             <td class="px-4 py-3 text-sm">
@@ -216,18 +194,34 @@
                                             </td>
 
 
-                                            <td class="px-4 py-3 text-sm ">
-                                                @if ($reservation->payment_status == 'Pending')
-                                                    <span
-                                                        class="p-2 text-white rounded-md bg-yellow-300 ">{{ $reservation->payment_status }}</span>
-                                                @elseif ($reservation->payment_status == 'Canceled')
-                                                    <span
-                                                        class="p-2 text-white rounded-md bg-red-500 ">{{ $reservation->payment_status }}</span>
-                                                @elseif ($reservation->payment_status == 'Paid')
-                                                    <span
-                                                        class="p-2 text-white rounded-md bg-green-500 px-5">{{ $reservation->payment_status }}</span>
+                                            <td class="px-4 py-3 text-sm">
+                                                @if ($reservation->payment_method == 'TPE')
+                                                    <span class="p-2 text-white rounded-md bg-blue-500">{{ $reservation->payment_method }}</span>
+                                                @elseif ($reservation->payment_method == 'Cheque')
+                                                    <span class="p-2 text-white rounded-md bg-green-500">{{ $reservation->payment_method }}</span>
+                                                @elseif ($reservation->payment_method == 'Espèce')
+                                                    <span class="p-2 text-white rounded-md bg-yellow-500">{{ $reservation->payment_method }}</span>
+                                                @elseif ($reservation->payment_method == 'Virement')
+                                                    <span class="p-2 text-white rounded-md bg-purple-500">{{ $reservation->payment_method }}</span>
+                                                @else
+                                                    <span class="p-2 text-white rounded-md bg-gray-500">No method selected</span>
                                                 @endif
                                             </td>
+                                            <td class="px-4 py-3 text-sm">
+                                                @if ($reservation->payment_status === 'Payé')
+                                                    <span class="p-2 text-white rounded-md bg-green-500">Payé</span>
+                                                @elseif ($reservation->payment_status === 'Partiellement payé')
+                                                    <span class="p-2 text-white rounded-md bg-yellow-500">
+                                                        Partiellement payé : {{ $reservation->amount_paid }} / {{ $reservation->total_price }}
+                                                    </span>
+                                                @else
+                                                    <span class="p-2 text-white rounded-md bg-red-500">Non payé</span>
+                                                @endif
+                                            </td>
+
+
+
+
 
                                             <td class="px-4 py-3 text-sm ">
                                                 @if ($reservation->status == 'Pending')

@@ -184,32 +184,42 @@
                                 <input type="date" id="end_date" name="end_date" class="w-full rounded-md" required>
                             </div>
                             <div class="sm:col-span-3">
-                        <label for="delivery-time" class="block text-sm font-medium leading-6 text-gray-900">
-                            Delivery Time
-                        </label>
-                        <input 
-                            type="time" 
-                            id="delivery-time" 
-                            name="delivery_time" 
-                            class="w-full rounded-md border border-gray-300 py-1.5 px-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pr-400" 
-                            placeholder="Select Delivery Time"
-                            required
-                        />
-                        </div>
-                        <div class="sm:col-span-3 ">
-                        <label for="return-time" class="block text-sm font-medium leading-6 text-gray-900">
-                            Return Time
-                        </label>
-                        <input 
-                            type="time" 
-                            id="return-time" 
-                            name="return_time" 
-                            class="w-full rounded-md border border-gray-300 py-1.5 px-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pr-400" 
-                            placeholder="Select Return Time"
-                            required
-                        />
-                    </div>
-                    
+                                <label for="delivery-time" class="block text-sm font-medium leading-6 text-gray-900">
+                                    Delivery Time
+                                </label>
+                                <input 
+                                    type="time" 
+                                    id="delivery-time" 
+                                    name="delivery_time" 
+                                    class="w-full rounded-md border border-gray-300 py-1.5 px-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pr-400" 
+                                    placeholder="Select Delivery Time"
+                                    required
+                                    onchange="syncReturnTime()"
+                                />
+                            </div>
+                            <div class="sm:col-span-3">
+                                <label for="return-time" class="block text-sm font-medium leading-6 text-gray-900">
+                                    Return Time
+                                </label>
+                                <input 
+                                    type="time" 
+                                    id="return-time" 
+                                    name="return_time" 
+                                    class="w-full rounded-md border border-gray-300 py-1.5 px-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pr-400" 
+                                    placeholder="Select Return Time"
+                                    required
+                                    readonly
+                                />
+                            </div>
+
+                            <script>
+                                function syncReturnTime() {
+                                    // Synchroniser le temps de retour avec celui de la livraison
+                                    var deliveryTime = document.getElementById('delivery-time').value;
+                                    document.getElementById('return-time').value = deliveryTime;
+                                }
+                            </script>
+
                     </div>
                         
 

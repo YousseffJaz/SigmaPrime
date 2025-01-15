@@ -7,14 +7,15 @@
             </div>
             <div class=" relative md:m-12 m-6 md:w-1/2 md:p-6">
 
-                <p>Welcome to our car rental shop conveniently located in the heart of the city. Situated in a prime
-                    location, our shop provides easy access and a central hub for all your car rental needs. Whether you are
-                    a local resident or a traveler exploring the area, finding us is a breeze.</p>
-                <br>
-                <p>Our shop is strategically positioned near major transportation hubs, including airports, train stations,
-                    and bus terminals, making it incredibly convenient for you to pick up and drop off your rental vehicle.
-                    Upon arrival, our friendly staff will warmly greet you, ensuring a smooth and efficient rental process
-                    from start to finish.</p>
+            <p>Bienvenue dans notre magasin de location de voitures, idéalement situé en plein cœur de la ville. Notre magasin,
+                 à un emplacement privilégié, vous offre un accès facile et constitue un point central pour tous vos besoins en location de voitures.
+                  Que vous soyez un résident local ou un voyageur explorant la région, nous sommes faciles à trouver.</p>
+            <br>
+            <p>Notre magasin est stratégiquement situé près des principaux hubs de transport, tels que les aéroports,
+                 les gares et les terminaux de bus, ce qui rend la prise en charge et la restitution de votre véhicule de location extrêmement pratiques. 
+                 À votre arrivée, notre personnel accueillant vous recevra chaleureusement, 
+                 garantissant un processus de location fluide et efficace du début à la fin.</p>
+
             </div>
 
         </div>
@@ -25,13 +26,14 @@
             </div>
 
             <div class=" relative md:m-12 m-6 md:w-1/2 md:p-6">
-                <p>Located in a vibrant neighborhood, our shop is surrounded by a variety of amenities and attractions.
-                    You'll find an array of restaurants, cafes, and shopping centers just a short distance away, perfect for
-                    grabbing a bite to eat or running errands before or after your car rental experience.</p>
-                <br>
-                <p>With ample parking space available at our location, you can easily drive in, park your own vehicle, and
-                    drive out with your rental car seamlessly. We prioritize your convenience, and our location is designed
-                    to minimize any inconvenience or delays, allowing you to focus on your journey ahead.</p>
+            <p>Situé dans un quartier animé, notre magasin est entouré de diverses commodités et attractions.
+                 Vous trouverez une variété de restaurants, de cafés et de centres commerciaux à une courte distance,
+                  parfaits pour prendre un repas ou faire des courses avant ou après votre expérience de location de voiture.</p>
+            <br>
+            <p>Avec un grand espace de stationnement disponible à notre emplacement, vous pouvez facilement entrer,
+                 garer votre propre véhicule et repartir avec votre voiture de location en toute simplicité. Nous privilégions votre commodité, 
+                 et notre emplacement est conçu pour minimiser toute gêne ou retard, vous permettant de vous concentrer sur votre voyage à venir.</p>
+
             </div>
 
 

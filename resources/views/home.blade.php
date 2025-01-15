@@ -16,23 +16,22 @@
             {{-- hero --}}
             <div class="flex justify-center md:py-28 py-12 mx-auto max-w-screen-xl">
                 <div class="flex  flex-col justify-center md:w-3/5  mx-12 md:ms-20 md:mx-0">
-                    <h1 class=" md:text-start text-center  font-car font-bold text-gray-900 mb-8  md:text-7xl text-4xl "><span class="text-pr-400"> EASY
-                        </span>AND
-                        FAST WAY TO RENT YOUR CAR</h1>
+                    <h1 class=" md:text-start text-center  font-car font-bold text-gray-900 mb-8  md:text-7xl text-4xl "><span class="text-pr-400"> Réservez
+                        </span> votre location
+                        de voiture</h1>
                     <div class="md:w-3/5 md:hidden  ">
                         <img loading="lazy" src="/images/home car.png" alt="home car">
                     </div>
-                    <p class="text-justify md:mx-0 mx-8 ">Whether you're planning a weekend
-                        getaway or a cross-country adventure, we've got you covered. With our wide selection of vehicles and
-                        convenient booking system, renting a car has never been this effortless.</p>
+                    <p class="text-justify md:mx-0 mx-8 ">Que vous planifiez une escapade le temps d'un week-end ou une aventure à travers le pays,
+                         nous avons ce qu'il vous faut. Avec notre large sélection de véhicules et notre système de réservation pratique,
+                          la location d'une voiture n'a jamais été aussi simple.</p>
                     <div class="flex justify-center md:justify-start mt-12 md:w-2/3 me-12 md:-ms-12">
                         <a href="/cars">
                             <button
-                                class="bg-pr-400 p-2 border-2 border-white rounded-md text-white hover:bg-pr-500 w-32 md:me-12 md:mx-12 mx-7 font-bold ">CARS</button>
+                                class="bg-pr-400 p-2 border-2 border-white rounded-md text-white hover:bg-pr-500 w-32 md:me-12 md:mx-12 mx-7 font-bold ">VOITURES</button>
                         </a>
                         <a href="/contact_us">
-                            <button class="border-2 border-pr-400 text-black w-32 p-2 rounded-md hover:bg-sec-400">CONTACT
-                                US</button>
+                            <button class="border-2 border-pr-400 text-black w-35 p-2 rounded-md hover:bg-sec-400">CONTACTEZ-NOUS</button>
                         </a>
                     </div>
                 </div>
@@ -48,15 +47,14 @@
             <div class="mx-auto max-w-screen-xl">
                 <div class="flex align-middle justify-center">
                     <hr class=" mt-8 h-0.5 w-2/5 bg-pr-500">
-                    <p class="my-2 mx-8  p-2 font-car font-bold text-pr-400 text-lg ">CARS</p>
+                    <p class="my-2 mx-8  p-2 font-car font-bold text-pr-400 text-lg ">VOITURES</p>
                     <hr class=" mt-8 h-0.5 w-2/5 bg-pr-500">
                     <hr>
                 </div>
                 <div class="   md:mr-16 mr-4 mb-4 flex justify-end">
                     <a href="/cars">
                         <button
-                            class="border-2 border-pr-400 text-black w-16 p-1 rounded-md hover:bg-pr-400 hover:text-white">See
-                            All</button>
+                            class="border-2 border-pr-400 text-black w-20 p-1 rounded-md hover:bg-pr-400 hover:text-white">Voir tout</button>
                     </a>
                 </div>
             </div>
@@ -121,8 +119,8 @@
             {{-- Our numbers section --}}
             <div class="mx-auto max-w-screen-xl mt-16 mb-32">
                 <div>
-                    <h2 class="text-center font-car text-3xl font-medium text-pr-400"> <span
-                            class=" text-gray-900">Our</span> Numbers</h2>
+                <h2 class="text-center font-car text-3xl font-medium text-pr-400"> <span class=" text-gray-900">Nos</span> Chiffres</h2>
+
                 </div>
                 <div
                     class="bg-gray-800 text-white  mt-6 rounded-md flex md:flex-row flex-col md:justify-evently items-center gap-6 md:gap-0  mx-16 max-w-screen-xl">
@@ -131,15 +129,15 @@
                         class="flex justify-around md:w-1/3 text-center my-4 h-16 align-middle md:border-b-0 md:border-r-2 border-b-2 pb-4 border-white">
                         <div class="flex flex-col justify-center">
                             <h3 class="font-car font-medium text-4xl">80</h3>
-                            <p class="font-car  text-lg">Super Cars</p>
-                        </div>
+                            <p class="font-car  text-lg">Super Voitures</p>
+                            </div>
                     </div>
                     <div
                         class="flex justify-around md:w-1/3 text-center my-4 h-16 align-middle md:border-b-0 md:border-r-2 border-b-2 pb-4 border-white">
                         <div class="flex flex-col justify-center">
                             <h3 class="font-car font-medium text-4xl">4500 + </h3>
-                            <p class="font-car  text-lg">Satisdied Client</p>
-                        </div>
+                            <p class="font-car  text-lg">Clients Satisfaits</p>
+                            </div>
                     </div>
                     <div
                         class="flex justify-around md:w-1/3 text-center my-4 h-16 align-middle  border-b-2 pb-4 border-white md:border-b-0">
@@ -156,16 +154,17 @@
             {{-- Why us section  --}}
             <div class="mx-auto max-w-screen-xl ">
                 <div>
-                    <h2 class="text-center font-car text-3xl font-medium text-pr-400"> <span
-                            class=" text-gray-900">Why</span> Choose us</h2>
+                <h2 class="text-center font-car text-3xl font-medium text-pr-400"> <span class="text-gray-900">Pourquoi</span> Nous Choisir</h2>
+
                 </div>
                 <div class="mt-7 mb-16">
-                    <p class="md:text-center text-xl text-justify mx-8 ">We
-                        prioritize your satisfaction and strive to make your car rental experience as seamless as possible.
-                        With our wide selection of well-maintained vehicles, competitive prices, and simple booking process,
-                        you can trust us to meet your needs. Our dedicated customer service team is available around the
-                        clock to assist you, ensuring that you receive the support you deserve. Whether you need a car for a
-                        weekend getaway or a long road trip, choose us for a hassle-free and enjoyable journey.</p>
+                <p class="md:text-center text-xl text-justify mx-8 ">Nous
+                        priorisons votre satisfaction et nous efforçons de rendre votre expérience de location de voiture aussi fluide que possible.
+                        Avec notre large sélection de véhicules bien entretenus, des prix compétitifs et un processus de réservation simple,
+                        vous pouvez nous faire confiance pour répondre à vos besoins. Notre équipe dédiée au service client est disponible 24h/24 et 7j/7 pour vous
+                        assister, vous assurant ainsi de recevoir le soutien que vous méritez. Que vous ayez besoin d'une voiture pour une
+                        escapade le temps d'un week-end ou pour un long road trip, choisissez-nous pour un voyage sans tracas et agréable.</p>
+
                 </div>
 
                 <div
@@ -184,9 +183,9 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="font-car font-bold text-gray-900 text-2xl">Customer Support</h3>
-                            <p class="font-car text-gray-700 text-sm ">Our dedicated team is here to provide exceptional
-                                customer support whenever you need it.</p>
+                            <h3 class="font-car font-bold text-gray-900 text-2xl">Support Client</h3>
+                            <p class="font-car text-gray-700 text-sm">Notre équipe dédiée est là pour fournir un support client exceptionnel chaque fois que vous en avez besoin.</p>
+
                         </div>
                     </div>
                     <div class="flex justify-center align-middle ">
@@ -204,8 +203,7 @@
                         </div>
                         <div>
                             <h3 class="font-car font-bold text-gray-900 text-2xl">Super Cars</h3>
-                            <p class="font-car text-gray-700 text-sm "> Experience the thrill of driving our top-of-the-line
-                                supercars that are sure to leave a lasting impression.</p>
+                            <p class="font-car text-gray-700 text-sm">Vivez l'excitation de conduire nos supercars de haute qualité qui ne manqueront pas de laisser une impression durable.</p>
                         </div>
                     </div>
                     <div class="flex justify-center align-middle ">
@@ -222,9 +220,9 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="font-car font-bold text-gray-900 text-2xl">Free Cancelation</h3>
-                            <p class="font-car text-gray-700 text-sm "> Enjoy the flexibility of free cancellation, giving
-                                you peace of mind in case your plans change.</p>
+                            <h3 class="font-car font-bold text-gray-900 text-2xl">Annulation gratuite</h3>
+                            <p class="font-car text-gray-700 text-sm">Profitez de la flexibilité de l'annulation gratuite, vous offrant ainsi la tranquillité d'esprit en cas de changement de vos plans.</p>
+
                         </div>
                     </div>
                     <div class="flex justify-center align-middle ">
@@ -241,10 +239,9 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="font-car font-bold text-gray-900 text-2xl">Best Price</h3>
-                            <p class="font-car text-gray-700 text-sm ">We guarantee the best prices for our rental cars,
-                                ensuring you get the most value for your money.
-                            </p>
+                            <h3 class="font-car font-bold text-gray-900 text-2xl">Meilleur prix</h3>
+                            <p class="font-car text-gray-700 text-sm">Nous garantissons les meilleurs prix pour nos voitures de location, vous assurant ainsi d'obtenir le meilleur rapport qualité-prix.</p>
+
                         </div>
                     </div>
                     <div class="flex justify-center align-middle ">
@@ -261,10 +258,9 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="font-car font-bold text-gray-900 text-2xl">Easy Process</h3>
-                            <p class="font-car text-gray-700 text-sm ">Our streamlined process makes renting a car quick
-                                and effortless, saving you time and hassle.
-                            </p>
+                            <h3 class="font-car font-bold text-gray-900 text-2xl">Processus simple</h3>
+                            <p class="font-car text-gray-700 text-sm">Notre processus simplifié rend la location d'une voiture rapide et sans effort, vous faisant gagner du temps et évitant les tracas.</p>
+
                         </div>
                     </div>
                     <div class="flex justify-center align-middle ">
@@ -281,10 +277,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="font-car font-bold text-gray-900 text-2xl">Digital services</h3>
-                            <p class="font-car text-gray-700 text-sm ">Take advantage of our convenient digital services,
-                                making your car rental experience even more convenient and efficient.
-                            </p>
+                            <h3 class="font-car font-bold text-gray-900 text-2xl">Services numériques</h3>
+                            <p class="font-car text-gray-700 text-sm">Profitez de nos services numériques pratiques, rendant votre expérience de location de voiture encore plus pratique et efficace.</p>
                         </div>
                     </div>
 
